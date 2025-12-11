@@ -1,0 +1,41 @@
+# BLOCK ALL MALICIOUS REQUESTS
+RewriteEngine On
+
+# Block common hacking tools
+RewriteCond %{HTTP_USER_AGENT} (nmap|nikto|wget|curl|sqlmap) [NC]
+RewriteRule ^.* - [F,L]
+
+# Block directory listing
+Options -Indexes
+
+# Block access to sensitive files
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|bak|sql|env)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block IP addresses (tambahkan IP yang mencurigakan)
+# Deny from 123.456.789.0
+
+# Prevent MIME type sniffing
+Header set X-Content-Type-Options "nosniff"
+
+# Enable XSS protection
+Header set X-XSS-Protection "1; mode=block"
+
+# Prevent clickjacking
+Header set X-Frame-Options "SAMEORIGIN"
+
+# Strict Transport Security
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+# Referrer Policy
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Content Security Policy
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https://ar-hosting.pages.dev https://img.icons8.com;"
+
+# Cache control
+Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+Header set Pragma "no-cache"
+Header set Expires 0
