@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio • Galih Pratama</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            /* Light Theme (Biru-Putih) */
+            --primary-color: #2563eb;
+            --primary-light: #3b82f6;
+            --secondary-color: #1e40af;
+            --accent-color: #60a5fa;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --bg-color: #ffffff;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        .dark-theme {
+            /* Dark Theme (Merah-Hitam) */
+            --primary-color: #dc2626;
+            --primary-light: #ef4444;
+            --secondary-color: #7f1d1d;
+            --accent-color: #f87171;
+            --text-color: #f8fafc;
+            --text-light: #cbd5e1;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== TYPEWRITER STYLES ===== */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--primary-color);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            height: 1em;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle.hidden {
+            opacity: 0;
+            transform: translateY(-100px);
+            pointer-events: none;
+        }
+
+        .theme-toggle i {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        /* ===== NAVBAR DENGAN LOGO ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 0.8rem 0;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo di Navbar (seperti TikTok) */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary-color);
+            background: var(--card-bg);
+            flex-shrink: 0;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-dots {
+            color: var(--primary-color);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--bg-color);
+            z-index: 999;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Desktop Menu */
+        .desktop-menu {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+            
+            .desktop-menu {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+            }
+            
+            .desktop-menu a {
+                color: var(--text-color);
+                text-decoration: none;
+                font-weight: 500;
+                padding: 5px 0;
+                position: relative;
+            }
+            
+            .desktop-menu a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--primary-color);
+                transition: var(--transition);
+            }
+            
+            .desktop-menu a:hover::after {
+                width: 100%;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding-top: 150px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 2rem;
+            border: 5px solid var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .hero-title {
+            margin-bottom: 1rem;
+            min-height: 4.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            min-height: 4rem;
+        }
+
+        .hero-description {
+            margin-bottom: 2rem;
+            min-height: 4rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills {
+            background-color: var(--card-bg);
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .skills-slider-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .skills-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease;
+            padding: 20px;
+        }
+
+        .skill-card {
+            flex: 0 0 250px;
+            background-color: var(--bg-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transform-style: preserve-3d;
+            transition: var(--transition);
+            position: relative;
+            min-height: 300px;
+        }
+
+        /* Stacked effect */
+        .skill-card:nth-child(1) {
+            transform: rotate(-5deg) translateY(10px);
+            z-index: 6;
+        }
+
+        .skill-card:nth-child(2) {
+            transform: rotate(-3deg) translateY(8px);
+            z-index: 5;
+            opacity: 0.9;
+        }
+
+        .skill-card:nth-child(3) {
+            transform: rotate(-1deg) translateY(6px);
+            z-index: 4;
+            opacity: 0.8;
+        }
+
+        .skill-card:nth-child(4) {
+            transform: rotate(1deg) translateY(4px);
+            z-index: 3;
+            opacity: 0.7;
+        }
+
+        .skill-card:nth-child(5) {
+            transform: rotate(3deg) translateY(2px);
+            z-index: 2;
+            opacity: 0.6;
+        }
+
+        .skill-card:nth-child(6) {
+            transform: rotate(5deg) translateY(0);
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .skill-level {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .level-bar {
+            flex: 1;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .level-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-slider-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .projects-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease;
+            padding: 20px;
+        }
+
+        .project-card {
+            flex: 0 0 300px;
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transform-style: preserve-3d;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        /* Stacked effect for projects */
+        .project-card:nth-child(1) {
+            transform: rotate(5deg) translateY(10px);
+            z-index: 6;
+        }
+
+        .project-card:nth-child(2) {
+            transform: rotate(3deg) translateY(8px);
+            z-index: 5;
+            opacity: 0.9;
+        }
+
+        .project-card:nth-child(3) {
+            transform: rotate(1deg) translateY(6px);
+            z-index: 4;
+            opacity: 0.8;
+        }
+
+        .project-card:nth-child(4) {
+            transform: rotate(-1deg) translateY(4px);
+            z-index: 3;
+            opacity: 0.7;
+        }
+
+        .project-card:nth-child(5) {
+            transform: rotate(-3deg) translateY(2px);
+            z-index: 2;
+            opacity: 0.6;
+        }
+
+        .project-card:nth-child(6) {
+            transform: rotate(-5deg) translateY(0);
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            padding: 4px 12px;
+            background-color: var(--border-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background-color: var(--card-bg);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .contact-info {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background-color: var(--bg-color);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-social {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background-color: var(--card-bg);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding-top: 120px;
+            }
+            
+            .hero-title {
+                min-height: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                min-height: 3.5rem;
+            }
+            
+            .hero-description {
+                min-height: 3.5rem;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .logo-image {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .skills-slider-container,
+            .projects-slider-container {
+                padding: 10px 0;
+            }
+            
+            .skill-card,
+            .project-card {
+                flex: 0 0 250px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo-image {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navigation dengan Logo di Samping Nama -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <!-- Logo di samping teks (seperti TikTok) -->
+            <a href="#home" class="logo-container">
+                <div class="logo-image">
+                    <img src="https://ar-hosting.pages.dev/1765480494635.jpg" alt="Logo Website">
+                </div>
+                <span class="logo-text">Portofolio<span class="logo-dots">...</span></span>
+            </a>
+            
+            <!-- Hamburger Menu -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Desktop Menu -->
+            <div class="desktop-menu">
+                <a href="#home">Home</a>
+                <a href="#about">Tentang</a>
+                <a href="#skills">Keahlian</a>
+                <a href="#projects">Proyek</a>
+                <a href="#contact">Kontak</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">Tentang</a>
+            <a href="#skills" class="mobile-link">Keahlian</a>
+            <a href="#projects" class="mobile-link">Proyek</a>
+            <a href="#contact" class="mobile-link">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-image">
+                    <img src="https://ar-hosting.pages.dev/1765460729109.jpg" alt="Muhammad Galih Pratama">
+                </div>
+                
+                <h1 class="hero-title" id="typewriter-title"></h1>
+                
+                <p class="hero-subtitle" id="typewriter-subtitle"></p>
+                
+                <p class="hero-description" id="typewriter-description"></p>
+                
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
+                    <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Tentang <span class="highlight">Saya</span></h2>
+            
+            <div class="about-content">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-light);">
+                        Saya adalah siswa kelas XII di SMK Negeri 1 Pulo Ampel dengan jurusan 
+                        <span class="highlight">Teknik Instalasi Tenaga Listrik (TITL)</span>. 
+                        Selain fokus pada bidang elektro, saya juga aktif mengembangkan skill programming 
+                        khususnya dalam pengembangan web dan bot automation.
+                    </p>
+                    
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-light);">
+                        Pengalaman nyata saya dapatkan melalui 
+                        <span class="highlight">Praktik Kerja Lapangan (PKL)</span> di 
+                        <span class="highlight">PT. Duta Sugar International</span>
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem;">
+                        <div style="padding: 1.5rem; background-color: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3><i class="fas fa-graduation-cap" style="color: var(--primary-color); margin-right: 10px;"></i> Pendidikan</h3>
+                            <p style="margin-top: 0.5rem; color: var(--text-light);">SMK Negeri 1 Pulo Ampel • TITL (2021 - 2026)</p>
+                        </div>
+                        
+                        <div style="padding: 1.5rem; background-color: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border-color);">
+                            <h3><i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 10px;"></i> Lokasi</h3>
+                            <p style="margin-top: 0.5rem; color: var(--text-light);">Kp. Sumur Gading Rt.05 Rw.10, Bojonegara, Serang - Banten</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Keahlian <span class="highlight">Saya</span></h2>
+            
+            <div class="skills-slider-container">
+                <div class="skills-track" id="skillsTrack">
+                    <!-- Skill 1 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <h3>HTML5</h3>
+                        <p>Struktur website yang semantic dan accessible</p>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" data-width="95"></div>
+                            </div>
+                            <span>95%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 2 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+                        <h3>CSS3</h3>
+                        <p>Styling, layout, dan animasi modern</p>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" data-width="90"></div>
+                            </div>
+                            <span>90%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 3 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <h3>JavaScript</h3>
+                        <p>Interaktivitas dan logika website</p>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" data-width="85"></div>
+                            </div>
+                            <span>85%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 4 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-node-js"></i>
+                        </div>
+                        <h3>Node.js</h3>
+                        <p>Server-side JavaScript runtime</p>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" data-width="80"></div>
+                            </div>
+                            <span>80%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 5 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>PLC Programming</h3>
+                        <p>Programmable Logic Controller</p>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" data-width="92"></div>
+                            </div>
+                            <span>92%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 6 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Electrical Install</h3>
+                        <p>Instalasi sistem kelistrikan</p>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" data-width="96"></div>
+                            </div>
+                            <span>96%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <button class="slider-btn" id="skillsPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn" id="skillsNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Proyek <span class="highlight">Saya</span></h2>
+            
+            <div class="projects-slider-container">
+                <div class="projects-track" id="projectsTrack">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://ar-hosting.pages.dev/1765460472321.jpg" alt="Xiao WhatsApp Bot">
+                        </div>
+                        <div class="project-content">
+                            <h3>Xiao WhatsApp Bot</h3>
+                            <p>Bot WhatsApp multifungsi dengan berbagai fitur seperti stiker maker, downloader media, dan automasi chat.</p>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Baileys</span>
+                                <span class="tech-tag">API</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="https://github.com/kamunanay/xiao" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://ar-hosting.pages.dev/1765468272972.jpg" alt="Portfolio Website">
+                        </div>
+                        <div class="project-content">
+                            <h3>Portfolio Website</h3>
+                            <p>Website portofolio responsif dengan design modern dan performa optimal.</p>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://ar-hosting.pages.dev/1765460282453.jpg" alt="PLC Control System">
+                        </div>
+                        <div class="project-content">
+                            <h3>Cek CT Di MCC CCR</h3>
+                            <p>Memeriksa Koneksi Dan juga Koneksi Current Transformer .</p>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">Current Transformer</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-download"></i> Dokumentasi
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://ar-hosting.pages.dev/1765469104785.jpg" alt="Ladder Diagram">
+                        </div>
+                        <div class="project-content">
+                            <h3>Ladder Diagram</h3>
+                            <p>Perancangan sistem kelistrikan untuk PLC.</p>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">Ladder Simulation</span>
+                                <span class="tech-tag">Diagram</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-download"></i> Diagram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://ar-hosting.pages.dev/1765469472330.jpg" alt="Perancangan System Forward And Reverse">
+                        </div>
+                        <div class="project-content">
+                            <h3>Forward And Reverse</h3>
+                            <p>Motor 3 fasa dapat berputar searah jarum jam (forward) atau berlawanan arah jarum jam (reverse) dengan cara menukar dua dari tiga fasa (R-S-T).</p>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">Simurelay</span>
+                                <span class="tech-tag">Automation</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-download"></i> Program
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <button class="slider-btn" id="projectsPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn" id="projectsNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi <span class="highlight">Saya</span></h2>
+            
+            <div class="contact-content">
+                <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Tertarik berkolaborasi atau memiliki pertanyaan? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.
+                </p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Lokasi</h4>
+                        <p style="color: var(--text-light); margin-top: 0.5rem;">Bojonegara, Serang - Banten</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h4>Telepon/WhatsApp</h4>
+                        <p style="color: var(--text-light); margin-top: 0.5rem;">+62 812 9534 4364</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p style="color: var(--text-light); margin-top: 0.5rem;">galih.pratama@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-social">
+                    <a href="https://wa.me/6281295344364" target="_blank" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://github.com/kamunanay" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:galih.pratama@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Portofolio<span style="color: var(--primary-color);">.</span></div>
+            <p class="footer-text">Muhammad Galih Pratama • Siswa SMK Negeri 1 Pulo Ampel</p>
+            <p class="footer-text">© 2024 Portofolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== TYPEWRITER ANIMATION =====
+        function typeWriter(element, text, speed, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    setTimeout(callback, 500);
+                }
+            }
+            
+            type();
+        }
+
+        // ===== THEME TOGGLE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Set initial theme based on localStorage or preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.remove('dark-theme');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            document.body.classList.add('dark-theme');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Hide/show theme toggle on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                themeToggle.classList.add('hidden');
+            } else {
+                themeToggle.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // ===== MOBILE MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // ===== SKILLS SLIDER =====
+        const skillsTrack = document.getElementById('skillsTrack');
+        const skillsPrev = document.getElementById('skillsPrev');
+        const skillsNext = document.getElementById('skillsNext');
+        const skillCards = document.querySelectorAll('.skill-card');
+        let skillsCurrentIndex = 0;
+        const skillsPerView = window.innerWidth < 768 ? 1 : 3;
+        const skillsTotalSlides = Math.ceil(skillCards.length / skillsPerView);
+        
+        function updateSkillsSlider() {
+            const cardWidth = skillCards[0].offsetWidth + 30;
+            const translateX = -(skillsCurrentIndex * cardWidth * skillsPerView);
+            skillsTrack.style.transform = `translateX(${translateX}px)`;
+        }
+        
+        skillsPrev.addEventListener('click', () => {
+            skillsCurrentIndex = (skillsCurrentIndex - 1 + skillsTotalSlides) % skillsTotalSlides;
+            updateSkillsSlider();
+        });
+        
+        skillsNext.addEventListener('click', () => {
+            skillsCurrentIndex = (skillsCurrentIndex + 1) % skillsTotalSlides;
+            updateSkillsSlider();
+        });
+        
+        // ===== PROJECTS SLIDER =====
+        const projectsTrack = document.getElementById('projectsTrack');
+        const projectsPrev = document.getElementById('projectsPrev');
+        const projectsNext = document.getElementById('projectsNext');
+        const projectCards = document.querySelectorAll('.project-card');
+        let projectsCurrentIndex = 0;
+        const projectsPerView = window.innerWidth < 768 ? 1 : 3;
+        const projectsTotalSlides = Math.ceil(projectCards.length / projectsPerView);
+        
+        function updateProjectsSlider() {
+            const cardWidth = projectCards[0].offsetWidth + 30;
+            const translateX = -(projectsCurrentIndex * cardWidth * projectsPerView);
+            projectsTrack.style.transform = `translateX(${translateX}px)`;
+        }
+        
+        projectsPrev.addEventListener('click', () => {
+            projectsCurrentIndex = (projectsCurrentIndex - 1 + projectsTotalSlides) % projectsTotalSlides;
+            updateProjectsSlider();
+        });
+        
+        projectsNext.addEventListener('click', () => {
+            projectsCurrentIndex = (projectsCurrentIndex + 1) % projectsTotalSlides;
+            updateProjectsSlider();
+        });
+        
+        // ===== ANIMATE SKILL BARS =====
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.level-fill');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBar = entry.target;
+                        const width = skillBar.getAttribute('data-width');
+                        skillBar.style.width = `${width}%`;
+                        observer.unobserve(skillBar);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => observer.observe(bar));
+        }
+        
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ===== INITIALIZE ON LOAD =====
+        window.addEventListener('load', () => {
+            // ===== TYPEWRITER EFFECT =====
+            const titleElement = document.getElementById('typewriter-title');
+            const subtitleElement = document.getElementById('typewriter-subtitle');
+            const descriptionElement = document.getElementById('typewriter-description');
+            
+            const titleText = "Muhammad Galih Pratama";
+            const subtitleText = "Siswa SMK Negeri 1 Pulo Ampel • Jurusan TITL";
+            const subtitleHighlight = "Programmer & Electrical Specialist";
+            const descriptionText = "Menggabungkan pengetahuan Teknik Instalasi Tenaga Listrik dengan skill programming untuk menciptakan solusi inovatif di era digital.";
+            
+            setTimeout(() => {
+                typeWriter(titleElement, titleText, 80, () => {
+                    setTimeout(() => {
+                        typeWriter(subtitleElement, subtitleText, 60, () => {
+                            subtitleElement.innerHTML += '<br><span class="highlight">' + subtitleHighlight + '</span>';
+                            
+                            setTimeout(() => {
+                                typeWriter(descriptionElement, descriptionText, 40);
+                            }, 500);
+                        });
+                    }, 500);
+                });
+            }, 1000);
+            
+            updateSkillsSlider();
+            updateProjectsSlider();
+            animateSkillBars();
+            
+            window.addEventListener('resize', () => {
+                updateSkillsSlider();
+                updateProjectsSlider();
+            });
+        });
+        
+        // ===== IMAGE ERROR HANDLING =====
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                const placeholder = document.createElement('div');
+                placeholder.style.cssText = `
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-weight: bold;
+                `;
+                placeholder.innerHTML = `<i class="fas fa-image" style="font-size: 1.5rem;"></i>`;
+                this.parentElement.appendChild(placeholder);
+                this.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
